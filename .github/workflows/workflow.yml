@@ -28,7 +28,7 @@ jobs:
     continue-on-error: true
     steps:
       - name: Quality Assurance with Sonarqube
-        uses: echo "Quality Assurance with Sonarqube"
+        run: echo "Quality Assurance with Sonarqube"
 
   deploy:
     name: Deploy Application in Azure
@@ -37,7 +37,7 @@ jobs:
 
     steps:
       - name: Deploy
-        uses: echo "Deploy Application in Azure"
+        run: echo "Deploy Application in Azure"
 
 
 
