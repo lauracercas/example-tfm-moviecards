@@ -111,13 +111,3 @@ jobs:
           app-name: 'app-moviecards-lauracercas'
           slot-name: 'Production'
           package: '*.jar'
-        env:
-          SPRING_PROFILES_ACTIVE: dev
-
-
-
-
-
-
-
-

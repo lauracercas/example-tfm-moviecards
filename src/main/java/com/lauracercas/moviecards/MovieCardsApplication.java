@@ -7,13 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class MovieCardsApplication {
 
     public static void main(String[] args) {
-        SpringApplication app = new SpringApplication(MovieCardsApplication.class);
-        String springProfilesActive = System.getenv("SPRING_PROFILES_ACTIVE");
-        if (springProfilesActive != null) {
-            app.setAdditionalProfiles(springProfilesActive);
-        }
-        app.run(args);
-//        SpringApplication.run(MovieCardsApplication.class, args);
+        SpringApplication.run(MovieCardsApplication.class, args);
     }
 
 }
