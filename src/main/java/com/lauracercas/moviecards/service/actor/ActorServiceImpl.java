@@ -10,29 +10,24 @@ import java.util.List;
 @Service
 public class ActorServiceImpl implements ActorService {
 
-    private final ActorJPA actorDao;
+    private final ActorJPA actorJPA;
 
-    public ActorServiceImpl(ActorJPA actorDao) {
-        this.actorDao = actorDao;
+    public ActorServiceImpl(ActorJPA actorJPA) {
+        this.actorJPA = actorJPA;
     }
-//    private final ActorDao actorDao;
-
-//    public ActorServiceImpl(ActorDao actorDao) {
-//        this.actorDao = actorDao;
-//    }
 
     @Override
     public List<Actor> getAllActors() {
-        return actorDao.findAll();
+        return actorJPA.findAll();
     }
 
     @Override
     public Actor save(Actor actor) {
-        return actorDao.save(actor);
+        return actorJPA.save(actor);
     }
 
     @Override
     public Actor getActorById(Integer actorId) {
-        return actorDao.getById(actorId);
+        return actorJPA.getById(actorId);
     }
 }

@@ -1,6 +1,5 @@
 package com.lauracercas.moviecards.unittest.service;
 
-import com.lauracercas.moviecards.dao.actor.ActorDao;
 import com.lauracercas.moviecards.model.Actor;
 import com.lauracercas.moviecards.repositories.ActorJPA;
 import com.lauracercas.moviecards.service.actor.ActorServiceImpl;
@@ -20,15 +19,14 @@ import static org.mockito.MockitoAnnotations.openMocks;
 class ActorServiceImplTest {
 
     @Mock
-    private ActorJPA actorDao;
-//    private ActorDao actorDao;
+    private ActorJPA actorJPA;
     private ActorServiceImpl sut;
     private AutoCloseable closeable;
 
     @BeforeEach
     void setUp() {
         closeable = openMocks(this);
-        sut = new ActorServiceImpl(actorDao);
+        sut = new ActorServiceImpl(actorJPA);
     }
 
     @AfterEach
@@ -42,7 +40,7 @@ class ActorServiceImplTest {
         actors.add(new Actor());
         actors.add(new Actor());
 
-        when(actorDao.findAll()).thenReturn(actors);
+        when(actorJPA.findAll()).thenReturn(actors);
 
         List<Actor> result = sut.getAllActors();
 
@@ -55,7 +53,7 @@ class ActorServiceImplTest {
         actor.setId(1);
         actor.setName("Sample Actor");
 
-        when(actorDao.getById(anyInt())).thenReturn(actor);
+        when(actorJPA.getById(anyInt())).thenReturn(actor);
 
         Actor result = sut.getActorById(1);
 
@@ -68,7 +66,7 @@ class ActorServiceImplTest {
         Actor actor = new Actor();
         actor.setName("New Actor");
 
-        when(actorDao.save(actor)).thenReturn(actor);
+        when(actorJPA.save(actor)).thenReturn(actor);
 
         Actor result = sut.save(actor);
 

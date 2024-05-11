@@ -10,28 +10,25 @@ import java.util.List;
 @Service
 public class MovieServiceImpl implements MovieService {
 
-    private final MovieJPA movieDao;
+    private final MovieJPA movieJPA;
 
-    public MovieServiceImpl(MovieJPA movieDao) {
-        this.movieDao = movieDao;
+    public MovieServiceImpl(MovieJPA movieJPA) {
+        this.movieJPA = movieJPA;
     }
 
-//    public MovieServiceImpl(MovieDao movieDao) {
-//        this.movieDao = movieDao;
-//    }
 
     @Override
     public List<Movie> getAllMovies() {
-        return movieDao.findAll();
+        return movieJPA.findAll();
     }
 
     @Override
     public Movie save(Movie movie) {
-        return movieDao.save(movie);
+        return movieJPA.save(movie);
     }
 
     @Override
     public Movie getMovieById(Integer movieId) {
-        return movieDao.getById(movieId);
+        return movieJPA.getById(movieId);
     }
 }

@@ -1,6 +1,5 @@
 package com.lauracercas.moviecards.unittest.service;
 
-import com.lauracercas.moviecards.dao.movie.MovieDao;
 import com.lauracercas.moviecards.model.Movie;
 import com.lauracercas.moviecards.repositories.MovieJPA;
 import com.lauracercas.moviecards.service.movie.MovieServiceImpl;
@@ -19,16 +18,14 @@ import static org.mockito.MockitoAnnotations.openMocks;
 
 class MovieServiceImplTest {
     @Mock
-    private MovieJPA movieDao;
-//    private MovieDao movieDao;
-
+    private MovieJPA movieJPA;
     private MovieServiceImpl sut;
     private AutoCloseable closeable;
 
     @BeforeEach
     public void setUp() {
         closeable = openMocks(this);
-        sut = new MovieServiceImpl(movieDao);
+        sut = new MovieServiceImpl(movieJPA);
     }
 
     @AfterEach
@@ -42,7 +39,7 @@ class MovieServiceImplTest {
         movies.add(new Movie());
         movies.add(new Movie());
 
-        when(movieDao.findAll()).thenReturn(movies);
+        when(movieJPA.findAll()).thenReturn(movies);
 
         List<Movie> result = sut.getAllMovies();
 
@@ -55,7 +52,7 @@ class MovieServiceImplTest {
         movie.setId(1);
         movie.setTitle("Sample Movie");
 
-        when(movieDao.getById(anyInt())).thenReturn(movie);
+        when(movieJPA.getById(anyInt())).thenReturn(movie);
 
         Movie result = sut.getMovieById(1);
 
@@ -68,7 +65,7 @@ class MovieServiceImplTest {
         Movie movie = new Movie();
         movie.setTitle("New Movie");
 
-        when(movieDao.save(movie)).thenReturn(movie);
+        when(movieJPA.save(movie)).thenReturn(movie);
 
         Movie result = sut.save(movie);
 
