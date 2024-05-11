@@ -112,7 +112,7 @@ jobs:
           slot-name: 'Production'
           package: '*.jar'
         env:
-          SPRING_PROFILES_ACTIVE: deploy
+          SPRING_PROFILES_ACTIVE: dev
 
 
 
