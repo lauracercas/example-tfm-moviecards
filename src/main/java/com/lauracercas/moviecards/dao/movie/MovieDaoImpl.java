@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
 public class MovieDaoImpl implements MovieDao {
 
     private final MovieJPA movieJPA;
