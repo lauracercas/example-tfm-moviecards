@@ -55,7 +55,7 @@ jobs:
           sudo mv chromedriver /usr/local/bin/
 
       - name: Run application to e2e tests
-        run: mvn spring-boot:run -Dspring-boot.run.profiles=test & sleep 60
+        run: mvn spring-boot:run -Ptest & sleep 60
 
       - name: Run tests
         run: mvn clean verify -Ptest
@@ -84,7 +84,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    needs: test
+    needs: qa
     environment:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
