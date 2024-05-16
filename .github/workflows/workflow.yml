@@ -44,6 +44,8 @@ jobs:
 
       - name: Install Google Chrome and ChromeDriver to e2e tests
         run: |
+          sudo apt-get install -f -y
+          sudo apt install unzip
           wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
           sudo dpkg -i google-chrome-stable_current_amd64.deb
           sudo apt --fix-broken install -y
