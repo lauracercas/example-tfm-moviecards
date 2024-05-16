@@ -57,10 +57,13 @@ jobs:
           sudo mv chromedriver /usr/local/bin/
 
       - name: Run application to e2e tests
-        run: mvn spring-boot:run -Ptest
+        run: mvn spring-boot:run -Ptest &
 
       - name: Run tests
         run: mvn clean verify -Ptest
+
+      - name: Stop application
+        run: pkill -f "java -jar"
 
 #  qa:
 #    name: QA
