@@ -31,9 +31,7 @@ jobs:
   test:
     name: Test
     needs: build
-    runs-on: self-hosted
-    container:
-      image: selenium/standalone-chrome:latest
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -44,19 +42,19 @@ jobs:
           java-version: "11"
           distribution: "adopt"
 
-#      - name: Install Google Chrome and ChromeDriver to e2e tests
-#        run: |
-#          sudo apt-get install -f -y
-#          sudo apt install unzip
-#          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-#          sudo dpkg -i google-chrome-stable_current_amd64.deb
-#          sudo apt --fix-broken install -y
-#
-#          CHROMEDRIVER_VERSION=$(curl -sS https://chromedriver.storage.googleapis.com/LATEST_RELEASE)
-#          curl -L -o chromedriver.zip https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip
-#          unzip chromedriver.zip
-#          chmod +x chromedriver
-#          sudo mv chromedriver /usr/local/bin/
+      - name: Install Google Chrome and ChromeDriver to e2e tests
+        run: |
+          sudo apt-get install -f -y
+          sudo apt install unzip
+          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo dpkg -i google-chrome-stable_current_amd64.deb
+          sudo apt --fix-broken install -y
+          
+          CHROMEDRIVER_VERSION=$(curl -sS https://chromedriver.storage.googleapis.com/LATEST_RELEASE)
+          curl -L -o chromedriver.zip https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip
+          unzip chromedriver.zip
+          chmod +x chromedriver
+          sudo mv chromedriver /usr/local/bin/
 
       - name: Run application to e2e tests
         run: mvn spring-boot:run -Ptest
