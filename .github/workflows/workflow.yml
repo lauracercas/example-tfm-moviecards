@@ -57,6 +57,8 @@ jobs:
       #          sudo mv chromedriver /usr/local/bin/
       - name: Install Chrome browser
         run: |
+          sudo apt-get install -f -y
+          sudo apt install unzip
           sudo apt-get update
           sudo apt-get install -y wget
           wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
