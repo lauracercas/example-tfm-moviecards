@@ -68,9 +68,8 @@ jobs:
         run: |
           CHROME_DRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE")
           wget "https://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip"
-          sudo unzip chromedriver_linux64.zip -d /usr/local/bin/
+          sudo unzip -o chromedriver_linux64.zip -d /usr/local/bin/
           sudo chmod +x /usr/local/bin/chromedriver
-
       - name: Run application to e2e tests
         run: mvn spring-boot:run -Ptest & sleep 60
 
